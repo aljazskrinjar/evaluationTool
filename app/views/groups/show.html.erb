@@ -1,1 +1,7 @@
 <h1><%= @group.name %></h1>
+<h3>Students </h3>
+<p> <% @students.each do |student| %></p>
+
+<%=student.name%>
+
+<%end%>
