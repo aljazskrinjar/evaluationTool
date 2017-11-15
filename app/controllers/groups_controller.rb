@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   def index
     @groups=Group.all.order(:name)
-    
+
   end
 
   def show
@@ -20,4 +20,20 @@ class GroupsController < ApplicationController
     end
 
   end
+
+
+
+  def the_chosen_one(reds,yellows,greens)
+    random = 1 + rand(100)
+    empty=[]
+
+    if random <= 17 && greens != []
+      greens.sample
+    elsif random <= 50 && yellows != []
+      yellows.sample
+    elsif reds !=[]
+      reds.sample
+    end
+  end
+  helper_method :the_chosen_one
 end
