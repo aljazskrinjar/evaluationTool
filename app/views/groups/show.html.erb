@@ -4,6 +4,29 @@
 <%red_graders = []%>
 <%yellow_graders = []%>
 <%green_graders = []%>
+<%non_graders = []%>
+
+<p> <% @students.each do |student| %></p>
+  <% lastValue = student.grades.last.value%>
+  <% if lastValue == 0 %>
+    <% red_graders << student %>
+  <% elsif lastValue == 1 %>
+    <% yellow_graders << student %>
+  <% elsif lastValue == 2 %>
+    <% green_graders << student %>
+  <% else %>
+    <% non_graders << student %>
+  <%end%>
+
+
+
+<%end%>
+
+<p>RED <%=red_graders.count.to_f/@students.count.to_f*100%>
+  YELLOW <%=yellow_graders.count.to_f/@students.count.to_f*100%>
+  GREEN <%=green_graders.count.to_f/@students.count.to_f*100%> </p>
+
+
 
 <p> <% @students.each do |student| %></p>
 
@@ -11,18 +34,13 @@
   <% lastValue = student.grades.last.value%>
 
   <% if lastValue == 0 %>
-    <% red_graders << student %>
     <%= "red" %>
   <% elsif lastValue == 1 %>
-    <% yellow_graders << student %>
     <%= "yellow" %>
-  <% else %>
-    <% green_graders << student %>
+  <% else lastValue == 2 %>
     <%= "green" %>
+
   <%end%>
-
-
-
 <%end%>
 
 
