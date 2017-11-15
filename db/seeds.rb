@@ -1,6 +1,7 @@
 Group.destroy_all
 Student.destroy_all
 User.destroy_all
+Grade.destroy_all
 
 group1=Group.create!(name: "Group1",start_date:Date.today,end_date:Date.today)
 group2=Group.create!(name: "Group2",start_date:Date.today,end_date:Date.today)
@@ -16,5 +17,8 @@ arno = User.create!(
 )
 
 grade3=Grade.create!(remark: "",value: 0, date: Date.today-2, student: student1, user: arno)
-grade1=Grade.create!(remark: "",value: 1, date: Date.today-1, student: student1, user: arno)
-grade2=Grade.create!(remark: "",value: 2, date: Date.today, student: student1, user: arno)
+grade1=Grade.create!(remark: "",value: 2, date: Date.today, student: student1, user: arno)
+grade2=Grade.create!(remark: "",value: 1, date: Date.today-1, student: student1, user: arno)
+
+grade1=Grade.create!(remark: "",value: 1, date: Date.today-1, student: student2, user: arno)
+grade2=Grade.create!(remark: "",value: 2, date: Date.today, student: student3, user: arno)
