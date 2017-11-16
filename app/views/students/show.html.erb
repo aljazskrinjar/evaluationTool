@@ -4,11 +4,16 @@
 
 
 <%= @student.name%>
-
+<% canEval=true %>
 <p> <% @grades.each do |grade| %></p>
 
+<%if grade.created_at.to_date == Date.today && grade.user_id == current_user.id %>
+  <% canEval=false %>
+<%end%>
 <%= grade.value %>
 
 <%end%>
 
+<%if canEval %>
 <%= render 'shared/addingEditingGrades' %>
+<%end%>
