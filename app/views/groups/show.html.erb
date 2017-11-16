@@ -52,7 +52,7 @@
   <%end%>
 
   <%= link_to "Delete Student", group_student_path(@group.id,student.id), method: :delete, data: { confirm: "Are you sure?" } %>
-
+  <%= link_to "Edit student", edit_group_student_path(@group.id,student.id) %>
 <%end%>
 
 
