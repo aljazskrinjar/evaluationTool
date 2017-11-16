@@ -1,0 +1,26 @@
+<%= form_for @student.grades.new, url: group_student_grades_path(@group.id,@student.id), method: :create do |f| %>
+
+
+  <div class="form-group">
+  <%= f.label :remark %>
+  <%= f.text_field :remark %>
+  </div>
+
+  <div class="form-group">
+  <%= f.label :value %>
+  <%= f.number_field :value %>
+  </div>
+  <div class="form-group">
+  <%= f.label :date %>
+  <%= f.date_select :date %>
+  </div>
+  <div class="form-group">
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+  <div class="actions">
+  <%= f.submit "Save" %>
+  </div>
+  <div class="actions">
+  <%= f.submit "Save and next" %>
+  </div>
+<% end %>
