@@ -11,8 +11,20 @@ class GradesController < ApplicationController
 
       end
     else
+      group= @student.group
+      students=group.students
+
+      index_of_student=students.index(@student)
+
+      if index_of_student == students.length-1
+        new_student=students[0]
+      else
+        new_student=students[index_of_student + 1]
+      end
+
+
       if @grade.save!
-         redirect_to groups_path
+         redirect_to group_student_path(@student.group.id,new_student.id)
       end
     end
 
