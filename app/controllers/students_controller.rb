@@ -25,6 +25,23 @@ class StudentsController < ApplicationController
    redirect_to groups_path
  end
 
+ def edit
+    @student = Student.find(params[:id])
+  #  @group = @student.group
+  end
+
+  def update
+    @student = Student.find(params[:id])
+
+    student_params = params.require(:student).permit(:name,:surname,:photo)
+
+    if @student.update_attributes(student_params)
+      redirect_to group_path(@group.id)
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def set_group
