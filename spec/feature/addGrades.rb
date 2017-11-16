@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-feature "Current user viewing the list of rooms",js: true do
+feature "adding grade",js: true do
   before { login_as user }
   let(:group1) { create :group }
   let(:student1) { create :student , group: group1 }
   let(:user)  { create :user, email: "current@user.com" }
 
-   scenario "logs in" do
+   scenario "adds grade" do
     visit group_student_path(group1.id,student1.id)
 
     fill_in 'Remark', with: 'Some fancy words'
@@ -18,7 +18,7 @@ feature "Current user viewing the list of rooms",js: true do
     expect(page).to have_text("2")
 
     visit group_path(group1.id)
-    
+
       expect(page).to have_text("green")
 
   end
