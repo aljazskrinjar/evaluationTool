@@ -1,6 +1,28 @@
 class GradesController < ApplicationController
   before_action :set_student
 
+  def show
+    @group=@student.group
+    @grade = Grade.find(params[:id])
+  end
+
+  def edit
+    @group=@student.group
+    @grade = Grade.find(params[:id])
+  end
+
+  def update
+    @grade = Grade.find(params[:id])
+    @group=@student.group
+    grade_params = params.require(:grade).permit(:value,:date,:remark)
+
+    if @grade.update_attributes(grade_params)
+      redirect_to group_student_path(@group.id, @student.id)
+    else
+      render 'edit'
+    end
+  end
+
 
   def create
     grade_params = params.require(:grade).permit(:remark,:value,:date, :user_id)

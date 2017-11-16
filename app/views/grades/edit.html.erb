@@ -1,0 +1,14 @@
+<%= form_for [@group, @student, @grade] do |f| %>
+
+  <%= f.label :remark %>
+  <%= f.text_field :remark %>
+
+  <%= f.label :value %>
+  <%= f.text_field :value %>
+
+  <%= f.label :date %>
+  <%= f.date_select :date %>
+
+  <%= f.submit %>
+
+<% end %>
