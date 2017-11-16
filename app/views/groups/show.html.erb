@@ -49,8 +49,10 @@
     <%= "yellow" %>
   <% elsif lastValue == 2 %>
     <%= "green" %>
-
   <%end%>
+
+  <%= link_to "Delete Student", group_student_path(@group.id,student.id), method: :delete, data: { confirm: "Are you sure?" } %>
+
 <%end%>
 
 

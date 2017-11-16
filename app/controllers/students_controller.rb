@@ -17,6 +17,14 @@ class StudentsController < ApplicationController
 
   end
 
+  def destroy
+   @student = Student.find(params[:id])
+
+   @student.destroy
+
+   redirect_to groups_path
+ end
+
   private
 
   def set_group
