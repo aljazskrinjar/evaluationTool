@@ -7,7 +7,12 @@
 <%non_graders = []%>
 
 <p> <% @students.each do |student| %></p>
-  <% lastValue = student.grades.last.value%>
+  <%if student.grades == [] %>
+    <% lastValue = 99%>
+  <%else%>
+    <% lastValue = student.grades.last.value%>
+  <%end%>
+
   <% if lastValue == 0 %>
     <% red_graders << student %>
   <% elsif lastValue == 1 %>
@@ -22,22 +27,27 @@
 
 <%end%>
 
-<p>RED <%=red_graders.count.to_f/@students.count.to_f*100%>
-  YELLOW <%=yellow_graders.count.to_f/@students.count.to_f*100%>
-  GREEN <%=green_graders.count.to_f/@students.count.to_f*100%> </p>
+<p>RED <%=red_graders.count.to_f/(@students.count - non_graders.count).to_f*100%>
+  YELLOW <%=yellow_graders.count.to_f/(@students.count - non_graders.count).to_f*100%>
+  GREEN <%=green_graders.count.to_f/(@students.count - non_graders.count).to_f*100%> </p>
 
 
 
 <p> <% @students.each do |student| %></p>
 
   <%= link_to student.name, group_student_path(@group.id,student.id) %>
-  <% lastValue = student.grades.last.value%>
+
+  <%if student.grades == [] %>
+    <% lastValue = 99%>
+  <%else%>
+    <% lastValue = student.grades.last.value%>
+  <%end%>
 
   <% if lastValue == 0 %>
     <%= "red" %>
   <% elsif lastValue == 1 %>
     <%= "yellow" %>
-  <% else lastValue == 2 %>
+  <% elsif lastValue == 2 %>
     <%= "green" %>
 
   <%end%>
