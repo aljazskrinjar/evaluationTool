@@ -27,10 +27,15 @@
 
 <%end%>
 
-<p>RED <%=red_graders.count.to_f/(@students.count - non_graders.count).to_f*100%>
-  YELLOW <%=yellow_graders.count.to_f/(@students.count - non_graders.count).to_f*100%>
-  GREEN <%=green_graders.count.to_f/(@students.count - non_graders.count).to_f*100%> </p>
-
+<p><% unless red_graders.empty? %>
+    RED <%=red_graders.count.to_f/(@students.count - non_graders.count).to_f*100%> %
+  <% end %>
+  <% unless yellow_graders.empty? %>
+    YELLOW <%=yellow_graders.count.to_f/(@students.count - non_graders.count).to_f*100%> %
+  <%end%>
+  <% unless green_graders.empty? %>
+    GREEN <%=green_graders.count.to_f/(@students.count - non_graders.count).to_f*100%> %</p>
+  <% end %>
 
 
 <p> <% @students.each do |student| %></p>
@@ -60,9 +65,9 @@
 <br />
 <br />
 <br />
-
-<%neo=the_chosen_one red_graders, yellow_graders, green_graders%>
-
+<% unless @students.empty? %>
+<%anakin=the_chosen_one red_graders+non_graders, yellow_graders, green_graders%>
+<% end %>
 
 
 
@@ -85,11 +90,13 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <% unless @students.empty? %>
+          <%=anakin.name%>
+        <% end%>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick="window.location.reload()">Close</button>
+
       </div>
     </div>
   </div>
