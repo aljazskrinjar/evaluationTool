@@ -3,8 +3,13 @@
   <%= f.label :remark %>
   <%= f.text_field :remark %>
 
-  <%= f.label :value %>
-  <%= f.text_field :value %>
+  <%= f.radio_button :value, '2', :checked => true %>
+  <%= label :value, 'Green' %>
+  <%= f.radio_button :value, '1' %>
+  <%= label :value, 'Yellow' %>
+  <%= f.radio_button :value, '0' %>
+  <%= label :value, 'Red' %>
+
 
   <%= f.label :date %>
   <%= f.date_select :date %>
