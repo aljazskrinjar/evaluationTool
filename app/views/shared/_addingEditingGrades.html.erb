@@ -6,10 +6,13 @@
   <%= f.text_field :remark %>
   </div>
 
-  <div class="form-group">
-  <%= f.label :value %>
-  <%= f.number_field :value %>
-  </div>
+  <%= f.radio_button :value, '2', :checked => true %>
+  <%= label :value, 'Green' %>
+  <%= f.radio_button :value, '1' %>
+  <%= label :value, 'Yellow' %>
+  <%= f.radio_button :value, '0' %>
+  <%= label :value, 'Red' %>
+
   <div class="form-group">
   <%= f.label :date %>
   <%= f.date_select :date %>
