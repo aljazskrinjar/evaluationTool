@@ -24,12 +24,25 @@ class GroupsController < ApplicationController
 
 
   def the_chosen_one(reds,yellows,greens)
-    random = 1 + rand(100)
-    empty=[]
+    arr = [*1..100]
 
-    if random <= 17 && greens != []
+    if reds == []
+      arr -= [*51..100]
+    end
+
+    if greens == []
+      arr -= [*1..17]
+    end
+
+    if yellows == []
+      arr -= [*18..50]
+    end
+
+    random = arr.sample
+
+    if random <= 17
       greens.sample
-    elsif random <= 50 && yellows != []
+    elsif random <= 50
       yellows.sample
     elsif reds !=[]
       reds.sample
