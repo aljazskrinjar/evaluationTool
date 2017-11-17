@@ -1,16 +1,19 @@
-<h1>Student</h1>
+
 
 
 
 
 <%= @student.name%>
+<br />
 <% canEval=true %>
-<p> <% @grades.each do |grade| %></p>
+
+<% @grades.each do |grade| %>
 
 <%if grade.created_at.to_date == Date.today && grade.user_id == current_user.id %>
   <% canEval=false %>
 <%end%>
-<%= link_to grade.value, group_student_grade_path(@group.id, @student.id, grade.id) %>
+<%grade.value_to_text%>
+<%= link_to grade.value_to_text, group_student_grade_path(@group.id, @student.id, grade.id) %>
 
 
 <%end%>
