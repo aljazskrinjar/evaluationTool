@@ -1,24 +1,20 @@
-# README
+# Student evaluation tool
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Last individual assignment at Codaisseur Academy.This rails web application helps teachers to keep track of all the evaluations given to students. As a teacher you can add classes, add students to classes, edit information about students, give evaluations to students, select a student on his last grade and give him a question (red students have 50% of chance, yellow students have 33 % of chance and green students have 17% of chance of geting picked).
 
-Things you may want to cover:
+## Work in progress
 
-* Ruby version
+I have intention to work more on frontend.
 
-* System dependencies
 
-* Configuration
+## Running Locally
 
-* Database creation
+Make sure you have [Ruby](https://www.ruby-lang.org/en/) and [Bundler](http://bundler.io/) installed.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+git clone git@github.com:aljazskrinjar/evaluationTool.git
+cd evaluationTool
+bundle install
+rake db:create db:migrate db:seed
+rails server
+```
