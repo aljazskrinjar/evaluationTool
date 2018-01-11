@@ -1,21 +1,20 @@
+<h2> Add a new Student </h2>
+
 <%= form_for [@group,@group.students.new], url: group_students_path(@group.id), method: :create do |f| %>
-    <div class="form-group">
+
       <%= f.label :name %>
       <%= f.text_field :name %>
-    </div>
 
 
-    <div class="form-group">
       <%= f.label :surname %>
       <%= f.text_field :surname %>
-    </div>
 
-    <div class="form-group">
+
+
       <%= f.label :photo %>
       <%= f.text_field :photo %>
-    </div>
 
-    <div class="actions">
+
       <%= f.submit "Submit", class: "btn btn-success" %>
-    </div>
+
 <% end %>

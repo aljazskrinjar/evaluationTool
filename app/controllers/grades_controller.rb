@@ -1,5 +1,6 @@
 class GradesController < ApplicationController
   before_action :set_student
+  before_action :authenticate_user!
 
   def show
     @group=@student.group

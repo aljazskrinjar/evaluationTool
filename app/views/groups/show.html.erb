@@ -1,5 +1,5 @@
-<h1><%= @group.name %></h1>
-<h3>Students </h3>
+<h1>Batch#<%= @group.name %></h1>
+
 
 <%red_graders = []%>
 <%yellow_graders = []%>
@@ -28,45 +28,41 @@
 <%end%>
 
 <p><% unless red_graders.empty? %>
-    RED <%=red_graders.count.to_f/(@students.count - non_graders.count).to_f*100%> %
+    RED <%=(red_graders.count.to_f/(@students.count - non_graders.count).to_f*100).round(1)%> %
   <% end %>
   <% unless yellow_graders.empty? %>
-    YELLOW <%=yellow_graders.count.to_f/(@students.count - non_graders.count).to_f*100%> %
+    YELLOW <%=(yellow_graders.count.to_f/(@students.count - non_graders.count).to_f*100).round(1)%> %
   <%end%>
   <% unless green_graders.empty? %>
-    GREEN <%=green_graders.count.to_f/(@students.count - non_graders.count).to_f*100%> %</p>
+    GREEN <%=(green_graders.count.to_f/(@students.count - non_graders.count).to_f*100).round(1)%> %</p>
   <% end %>
 
+<div class="flex-container">
+ <% @students.each do |student| %>
+ <div>
+  <h2><%= link_to student.name, group_student_path(@group.id,student.id) %> </h2>
+  <br />
+  <%=link_to (image_tag student.photo), group_student_path(@group.id,student.id)%>
 
-<p> <% @students.each do |student| %></p>
-
-  <%= link_to student.name, group_student_path(@group.id,student.id) %>
 
   <%if student.grades == [] %>
-    <% lastValue = 99%>
+    <% lastValue = ""%>
   <%else%>
-    <% lastValue = student.grades.last.value%>
+    <% lastValue = student.grades.last.value_to_text%>
   <%end%>
-
-  <% if lastValue == 0 %>
-    <%= "red" %>
-  <% elsif lastValue == 1 %>
-    <%= "yellow" %>
-  <% elsif lastValue == 2 %>
-    <%= "green" %>
-  <%end%>
+  <br />
+  <%= lastValue %>
 
   <%= link_to "Delete Student", group_student_path(@group.id,student.id), method: :delete, data: { confirm: "Are you sure?" } %>
   <%= link_to "Edit student", edit_group_student_path(@group.id,student.id) %>
+</div>
 <%end%>
+</div>
 
 
 
-<br />
-<br />
-<br />
 <% unless @students.empty? %>
-<%anakin=the_chosen_one red_graders+non_graders, yellow_graders, green_graders%>
+<%neo=the_chosen_one red_graders+non_graders, yellow_graders, green_graders%>
 <% end %>
 
 
@@ -75,7 +71,7 @@
 <br />
 <br />
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
   Ask a question
 </button>
 
@@ -91,7 +87,8 @@
       </div>
       <div class="modal-body">
         <% unless @students.empty? %>
-          <%=anakin.name%>
+          <%=neo.name%>
+          <%= image_tag neo.photo%>
         <% end%>
       </div>
       <div class="modal-footer">
@@ -102,4 +99,11 @@
   </div>
 </div>
 
+
+<br />
+
 <%= render 'shared/addingStudents' %>
+
+<br />
+<br />
+<br />

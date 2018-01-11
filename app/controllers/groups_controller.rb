@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @groups=Group.all.order(:name)
 
@@ -44,7 +46,7 @@ class GroupsController < ApplicationController
       greens.sample
     elsif random <= 50
       yellows.sample
-    elsif reds !=[]
+    else 
       reds.sample
     end
   end

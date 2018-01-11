@@ -1,8 +1,13 @@
 <h1>Groups</h1>
 
 <% @groups.each do |group| %>
-
-<p>  <%= link_to group.name, group_path(group.id) %></p>
+<div>
+  <%= link_to ("Batch " + group.name), group_path(group.id) %>
+  Starts at:  <%=  group.start_date %>
+  Ends at:  <%= group.end_date %>
+  <br />
+  <br />
+</div>
 
 <% end %>
 

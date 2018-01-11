@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_group
   def show
     @student = Student.find(params[:id])
@@ -22,7 +23,7 @@ class StudentsController < ApplicationController
 
    @student.destroy
 
-   redirect_to groups_path
+   redirect_to group_path(@student.group.id)
  end
 
  def edit

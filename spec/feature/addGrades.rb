@@ -11,15 +11,15 @@ feature "adding grade",js: true do
 
     fill_in 'Remark', with: 'Some fancy words'
 
-    fill_in 'Value', with: '2'
+
 
 
     page.execute_script("$('form').submit()")
-    expect(page).to have_text("2")
+    expect(page).to have_text("GREEN")
 
     visit group_path(group1.id)
 
-      expect(page).to have_text("green")
+      expect(page).to have_text("GREEN")
 
   end
 

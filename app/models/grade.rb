@@ -7,8 +7,10 @@ class Grade < ApplicationRecord
       return "RED"
     elsif value == 1
       return "YELLOW"
-    else
+    elsif value == 2
       return "GREEN"
+    else
+      return ""
     end
 
   end
